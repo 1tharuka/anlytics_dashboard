@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+const colors = require("tailwindcss/colors");
 
-## Getting Started
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    // Path to Tremor module
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    transparent: "transparent",
+    current: "currentColor",
+    extend: {
+      colors: {
+        // light mode
+        tremor: {
+          brand: {
+            faint: colors.blue[50],
+            muted: colors.blue[200],
+            subtle: colors.blue[400],
+            DEFAULT: colors.blue[500],
+            emphasis: colors.blue[700],
+            inverted: colors.white,
+          },
+          background: {
+            muted: colors.gray[50],
+            subtle: colors.gray[100],
+            DEFAULT: colors.white,
+            emphasis: colors.gray[700],
+          },
+          border: {
+            DEFAULT: colors.gray[200],
+          },
+          ring: {
+            DEFAULT: colors.gray[200],
+          },
+          content: {
+            subtle: colors.gray[400],
+            DEFAULT: colors.gray[500],
+            emphasis: colors.gray[700],
+            strong: colors.gray[900],
+            inverted: colors.white,
+          },
+        },
+        // dark mode
+        "dark-tremor": {
+          brand: {
+            faint: "#0B1229",
+            muted: colors.blue[950],
+            subtle: colors.blue[800],
+            DEFAULT: colors.blue[500],
+            emphasis: colors.blue[400],
+            inverted: colors.blue[950],
+          },
+          background: {
+            muted: "#131A2B",
+            subtle: colors.gray[800],
+            DEFAULT: colors.gray[900],
+            emphasis: colors.gray[300],
+          },
+          border: {
+            DEFAULT: colors.gray[800],
+          },
+          ring: {
+            DEFAULT: colors.gray[800],
+          },
+          content: {
+            subtle: colors.gray[600],
+            DEFAULT: colors.gray[500],
+            emphasis: colors.gray[200],
+            strong: colors.gray[50],
+            inverted: colors.gray[950],
+          },
+        },
+      },
+      boxShadow: {
+        // light
+        "tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "tremor-card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        // dark
+        "dark-tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "dark-tremor-card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "dark-tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+      },
+      borderRadius: {
+        "tremor-small": "0.375rem",
+        "tremor-default": "0.5rem",
+        "tremor-full": "9999px",
+      },
+      fontSize: {
+        "tremor-label": ["0.75rem", { lineHeight: "1rem" }],
+        "tremor-default": ["0.875rem", { lineHeight: "1.25rem" }],
+        "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
+        "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
+      },
+    },
+  },
+  safelist: [
+    {
+      pattern:
+        /^(bg-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+      variants: ["hover", "ui-selected"],
+    },
+    {
+      pattern:
+        /^(text-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+      variants: ["hover", "ui-selected"],
+    },
+    {
+      pattern:
+        /^(border-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+      variants: ["hover", "ui-selected"],
+    },
+    {
+      pattern:
+        /^(ring-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+    },
+    {
+      pattern:
+        /^(stroke-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+    },
+    {
+      pattern:
+        /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+    },
+  ],
+  plugins: [require("@headlessui/tailwindcss"), require("@tailwindcss/forms")],
+};
