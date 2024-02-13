@@ -4,7 +4,7 @@ export default function Home() {
    <div>
     <h1 className="flex text-white ">This is Home Page</h1>
     <button>
-      <Link href="../analiytics">DASHBOARD</Link>
+      <Link href="../analiytics" className="w-full text-amber-50">DASHBOARD</Link>
     </button>
    </div>
   );
